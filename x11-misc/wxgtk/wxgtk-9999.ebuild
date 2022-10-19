@@ -2,8 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-
-inherit git-r3 xdg-utils desktop
+inherit git-r3 wrapper xdg-utils desktop
 
 DESCRIPTION="The wX weather app port to GTK written in Vala"
 HOMEPAGE="https://gitlab.com/joshua.tee/wxgtk"
@@ -37,11 +36,12 @@ src_compile() {
 
 src_install() {
 	default
-	insinto /usr/bin
+	insinto /opt/${PN}
 	dobin wxgtk
-
+	doins -r resourceCreation
 	doicon -s 512 resourceCreation/images/wx_launcher.png
-	make_desktop_entry /usr/bin/${PN} "wX" wx_launcher Science 
+	make_wrapper ${PN} "/opt/${PN}/${PN}" /opt/${PN} /opt/${PN} /opt/${PN}
+	make_desktop_entry /opt/${PN}/${PN} "wX" wx_launcher Science
 }
 
 pkg_postinst() {
