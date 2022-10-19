@@ -15,7 +15,7 @@ KEYWORDS="~amd64 ~arm64 ~x86"
 CMAKE_USE_DIR="${WORKDIR}/${PF}"
 BUILD_DIR="${CMAKE_USE_DIR}/webcamoid-build"
 
-IUSE="alsa -coreaudio ffmpeg gstreamer jack libuvc oss pulseaudio qtaudio v4lutils videoeffects debug headers v4l -pipewire vlc"
+IUSE="alsa coreaudio ffmpeg gstreamer jack libuvc oss pulseaudio qtaudio v4lutils videoeffects debug headers v4l -pipewire vlc"
 
 REQUIRED_USE="v4lutils? ( v4l )"
 
