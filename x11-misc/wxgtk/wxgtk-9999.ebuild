@@ -41,7 +41,7 @@ src_install() {
 	doins -r resourceCreation
 	doicon -s 512 resourceCreation/images/wx_launcher.png
 	make_wrapper ${PN} "/opt/${PN}/${PN}" /opt/${PN} /opt/${PN} /opt/${PN}
-	make_desktop_entry /opt/${PN}/${PN} "wX" wx_launcher Science
+	make_desktop_entry /usr/bin/wxgtk "wX" wx_launcher Science
 }
 
 pkg_postinst() {
