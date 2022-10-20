@@ -36,11 +36,12 @@ src_compile() {
 
 src_install() {
 	default
+	exeinto /opt/${PN}
+	doexe wxgtk
 	insinto /opt/${PN}
-	dobin wxgtk
 	doins -r resourceCreation
 	doicon -s 512 resourceCreation/images/wx_launcher.png
-	make_wrapper ${PN} "/opt/${PN}/${PN}" /opt/${PN} /opt/${PN} /opt/${PN}
+	make_wrapper ${PN} "/opt/${PN}/${PN}" /opt/${PN} /opt/${PN} /usr/bin
 	make_desktop_entry /usr/bin/wxgtk "wX" wx_launcher Science
 }
 
