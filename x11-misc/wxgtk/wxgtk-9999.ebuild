@@ -41,7 +41,7 @@ src_install() {
 	insinto /opt/${PN}
 	doins -r resourceCreation
 	doicon -s 512 resourceCreation/images/wx_launcher.png
-	make_wrapper ${PN} "/opt/${PN}/${PN}" /opt/${PN} /opt/${PN} /usr/bin
+	make_wrapper ${PN} "/opt/${PN}/${PN}" /opt/${PN} "/usr/lib64:/usr/lib" /usr/bin
 	make_desktop_entry /usr/bin/wxgtk "wX" wx_launcher Science
 }
 
@@ -51,6 +51,9 @@ pkg_postinst() {
 }
 
 pkg_postrm() {
+	elog "make sure to delete the \$HOME/.config/joshua.tee@gmail.com/wxgtk.conf file"
+	elog "If the file is not removed it may cause the ${PN} program to crash after reinstalling with the old config file unfortunately"
+	elog "https://gitlab.com/joshua.tee/wxgtk#output-to-local-filesystem-file-should-not-exist-before-running-program-for-first-time"
 	xdg_icon_cache_update
 	xdg_desktop_database_update
 }
