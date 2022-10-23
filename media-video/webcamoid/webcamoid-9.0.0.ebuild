@@ -47,6 +47,7 @@ BDEPEND="
 "
 
 src_prepare() {
+	sed 's|find_program(GIT_BIN git)|#find_program(GIT_BIN git)|' libAvKys/cmake/ProjectCommons.cmake -i
 	cmake_src_prepare
 }
 
